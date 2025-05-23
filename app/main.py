@@ -1,14 +1,22 @@
-from typing import Union
 from fastapi import FastAPI
+import uvicorn
+from app.common.config import conf
 
-app = FastAPI()
+def create_app() -> FastAPI:
+    """
+    Create and configure the FastAPI application.
+    """
+    app = FastAPI()
+    c = conf()
 
+    # 데이터 베이스 이니셜라이즈
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+    # 레디스 이니셜라이즈
 
+    # 미들웨어 정의
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+    # 라우터 정의
+    return app
+
+app = create_app()
+
